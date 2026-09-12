@@ -1334,30 +1334,36 @@ if (document.readyState === 'loading') {
 
   let isSubmitting = false;
 
-  sendBtn.addEventListener('click', async () => {
+  function setStatus(message, type) {
+    status.className = 'contact-form-status';
+    if (type) {
+      status.classList.add(type);
+    }
+    status.textContent = message;
+  }
+
+  async function submitForm() {
     if (isSubmitting) return;
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
-    const msg = textarea ? textarea.value.trim() : '';
+    const msg = textarea.value.trim();
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    status.className = 'contact-form-status';
     if (!name || !email || !msg || name.length > 100 || email.length > 254 || msg.length > 5000) {
-      status.textContent = 'Please complete your name, email, and message.';
-      status.classList.add('is-error');
+      setStatus('Please complete your name, email, and message.', 'is-error');
       return;
     }
 
     if (!emailPattern.test(email)) {
-      status.textContent = 'Please enter a valid email address.';
-      status.classList.add('is-error');
+      setStatus('Please enter a valid email address.', 'is-error');
       return;
     }
 
     isSubmitting = true;
     sendBtn.disabled = true;
-    status.textContent = 'Sending...';
+    sendBtn.setAttribute('aria-busy', 'true');
+    setStatus('Sending your message...', 'is-loading');
 
     try {
       const response = await fetch('/api/contact', {
@@ -1366,21 +1372,26 @@ if (document.readyState === 'loading') {
         body: JSON.stringify({ name, email, message: msg })
       });
 
+      const result = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error('Contact request failed');
+        throw new Error(result.error || 'Contact request failed');
       }
 
       nameInput.value = '';
       emailInput.value = '';
       textarea.value = '';
-      status.textContent = 'Message sent successfully.';
+      setStatus('Thanks! Your message has been sent successfully.', 'is-success');
     } catch (error) {
-      status.textContent = 'Something went wrong. Please try again.';
-      status.classList.add('is-error');
+      const message = error instanceof Error && error.message ? error.message : 'Something went wrong. Please try again.';
+      setStatus(message, 'is-error');
     } finally {
       isSubmitting = false;
       sendBtn.disabled = false;
+      sendBtn.removeAttribute('aria-busy');
     }
-  });
+  }
+
+  sendBtn.addEventListener('click', submitForm);
 })();
 

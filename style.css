@@ -6003,6 +6003,14 @@ h2 i {
     color: #fda4af;
 }
 
+.contact-form-status.is-success {
+    color: #a7f3d0;
+}
+
+.contact-form-status.is-loading {
+    color: #bfdbfe;
+}
+
 .contact-send-btn {
     margin-top: 14px;
     display: inline-flex;
@@ -6019,7 +6027,7 @@ h2 i {
     letter-spacing: 0.04em;
     border-radius: 10px;
     cursor: pointer;
-    transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
     box-shadow: 0 4px 18px var(--accent-glow);
     font-family: var(--sans);
 }
@@ -6028,6 +6036,13 @@ h2 i {
     background: linear-gradient(100deg, #67e8f9, #3b82f6 58%, #a78bfa);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.contact-send-btn:disabled {
+    opacity: 0.8;
+    cursor: wait;
+    transform: none;
+    box-shadow: none;
 }
 
 .contact-send-btn:active {
