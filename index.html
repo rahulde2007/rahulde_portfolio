@@ -26,26 +26,6 @@
 	</div>
 	<div class="scroll-progress" aria-hidden="true"><span></span></div>
 
-	<div class="portfolio-welcome-assistant" id="portfolioWelcomeAssistant" aria-live="polite">
-		<button class="welcome-assistant-bubble" id="welcomeAssistantBubble" type="button" aria-label="Open welcome message" aria-expanded="false">
-			<span class="welcome-bubble-glow" aria-hidden="true"></span>
-			<span class="welcome-bubble-icon" aria-hidden="true">AI</span>
-		</button>
-		<div class="welcome-assistant-card" id="welcomeAssistantCard" role="dialog" aria-modal="false" aria-label="Portfolio welcome assistant">
-			<div class="welcome-assistant-header">
-				<div class="welcome-assistant-avatar" aria-hidden="true">AI</div>
-				<div class="welcome-assistant-indicator">
-					<span class="welcome-assistant-dot" aria-hidden="true"></span>
-					<small>online</small>
-				</div>
-				<button class="welcome-assistant-close" type="button" aria-label="Minimize welcome assistant">−</button>
-			</div>
-			<div class="welcome-assistant-body">
-				<p class="welcome-assistant-text" aria-live="polite"></p>
-			</div>
-		</div>
-	</div>
-	
 	<header class="site-header">
 		<a class="brand" href="#home" aria-label="Rahul De home"><span>RD</span><strong>RAHUL DE</strong></a>
 		<div class="header-right">
@@ -102,7 +82,7 @@
 				<div class="hero-photo reveal">
 					<div class="photo-orbit-wrapper">
 						<div class="hero-photo-frame">
-							<img src="./1787078400465_proimage.png" alt="Rahul De - CSE Student" class="hero-photo-img">
+							<img src="./images/hero.png" alt="Rahul De - CSE Student" class="hero-photo-img">
 						</div>
 						<span class="photo-orbit-dot" aria-hidden="true"></span>
 					</div>
@@ -369,17 +349,6 @@
 				<h2 id="certificates-title">Certified<br><i>milestones.</i></h2>
 			</div>
 			<div class="certificates-grid reveal">
-				<a class="certificates-card" href="./certificate/Bridge%20course.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Bridge Course Certificate in a new tab">
-					<div class="certificates-card-top">
-						<span class="certificates-badge">Certificate</span>
-						<span class="certificates-arrow">↗</span>
-					</div>
-					<div class="certificates-card-body">
-						<p class="certificates-label">01 / BRIDGE COURSE</p>
-						<h3>Bridge Course Certificate</h3>
-						<p>Successfully completed a Bridge Course focused on strengthening foundational knowledge for Computer Science &amp; Engineering.</p>
-					</div>
-				</a>
 				<a class="certificates-card" href="./certificate/First%20commit.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open First Commit Certificate in a new tab">
 					<div class="certificates-card-top">
 						<span class="certificates-badge">Certificate</span>
@@ -400,17 +369,6 @@
 						<p class="certificates-label">03 / CIRQULA INDIA</p>
 						<h3>CirQula India Certificate</h3>
 						<p>Certificate issued by CirQula India.</p>
-					</div>
-				</a>
-				<a class="certificates-card" href="./certificate/e-WASTE%20AWARENESS.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open e-WASTE Awareness Certificate in a new tab">
-					<div class="certificates-card-top">
-						<span class="certificates-badge">Certificate</span>
-						<span class="certificates-arrow">↗</span>
-					</div>
-					<div class="certificates-card-body">
-						<p class="certificates-label">04 / E-WASTE AWARENESS</p>
-						<h3>e-WASTE Awareness Certificate</h3>
-						<p>Certificate for completing e-WASTE Awareness.</p>
 					</div>
 				</a>
 			</div>
@@ -475,46 +433,6 @@
 					<span></span>
 					<p>THE GOAL IS PROGRESS</p>
 				</div>
-			</div>
-		</section>
-
-		<!-- 09. Ask Rahul AI Section -->
-		<section id="ask-rahul-ai" class="section-pad ask-rahul-section" aria-labelledby="ask-rahul-title">
-			<div class="section-heading reveal">
-				<p class="kicker">09 / PERSONAL PORTFOLIO ASSISTANT</p>
-				<h2 id="ask-rahul-title">ASK RAHUL <i>AI</i></h2>
-				<p class="heading-note">A focused guide to Rahul's learning journey, projects and ambitions.</p>
-			</div>
-			<div class="rahul-ai-shell reveal">
-				<div class="rahul-ai-topbar">
-					<div class="rahul-ai-identity">
-						<div class="rahul-ai-avatar" aria-hidden="true">AI</div>
-						<div>
-							<strong>Rahul AI</strong>
-							<span>Ask me about Rahul</span>
-						</div>
-					</div>
-					<button class="rahul-ai-clear" id="rahulAiClear" type="button">Clear conversation</button>
-				</div>
-				<div class="rahul-ai-messages" id="rahulAiMessages" role="log" aria-live="polite" aria-label="Rahul AI conversation">
-					<div class="rahul-ai-message rahul-ai-message--assistant">
-						<div class="rahul-ai-message-avatar" aria-hidden="true">AI</div>
-						<p>Hi! I'm Rahul AI 👋<br>Ask me anything about Rahul De.</p>
-					</div>
-				</div>
-				<div class="rahul-ai-suggestions" aria-label="Suggested questions">
-					<button type="button" data-question="Who is Rahul?">Who is Rahul?</button>
-					<button type="button" data-question="Where is Rahul from?">Where is Rahul from?</button>
-					<button type="button" data-question="What does Rahul study?">What does Rahul study?</button>
-					<button type="button" data-question="What are Rahul's skills?">Rahul's skills</button>
-					<button type="button" data-question="Show me Rahul's projects">Rahul's projects</button>
-				</div>
-				<form class="rahul-ai-composer" id="rahulAiForm">
-					<label class="sr-only" for="rahulAiInput">Ask Rahul AI a question</label>
-					<input id="rahulAiInput" name="question" type="text" maxlength="500" autocomplete="off" placeholder="Ask about Rahul De..." required>
-					<button type="submit" aria-label="Send question"><span aria-hidden="true">↑</span></button>
-				</form>
-				<p class="rahul-ai-status" id="rahulAiStatus" role="status" aria-live="polite"></p>
 			</div>
 		</section>
 

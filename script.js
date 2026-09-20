@@ -7,94 +7,6 @@ const navLinks = [...document.querySelectorAll('.nav-link')];
 const progressBar = document.querySelector('.scroll-progress span');
 const sections = [...document.querySelectorAll('main section[id]')];
 
-function initWelcomeAssistant() {
-  const assistant = document.getElementById('portfolioWelcomeAssistant');
-  const bubble = document.getElementById('welcomeAssistantBubble');
-  const card = document.getElementById('welcomeAssistantCard');
-  const closeButton = document.querySelector('.welcome-assistant-close');
-  const textElement = document.querySelector('.welcome-assistant-text');
-
-  if (!assistant || !bubble || !card || !closeButton || !textElement) return;
-
-  const message = "Hi! 👋 Welcome to Rahul's Portfolio. I'm Rahul's AI Assistant.";
-  const welcomeVisibleMs = 3000;
-  let typingTimer = null;
-  let closeTimer = null;
-  let isOpen = false;
-  let isDismissed = false;
-
-  function clearTyping() {
-    if (typingTimer) {
-      clearInterval(typingTimer);
-      typingTimer = null;
-    }
-  }
-
-  function startWelcomeTimer() {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(() => {
-      hideWelcome();
-    }, welcomeVisibleMs);
-  }
-
-  function showMessage() {
-    clearTyping();
-    let index = 0;
-    textElement.textContent = '';
-    typingTimer = setInterval(() => {
-      index += 1;
-      textElement.textContent = message.slice(0, index);
-      if (index >= message.length) {
-        clearTyping();
-      }
-    }, 40);
-  }
-
-  function openAssistant() {
-    if (isDismissed || isOpen) return;
-    assistant.classList.add('is-open');
-    bubble.setAttribute('aria-expanded', 'true');
-    isOpen = true;
-    showMessage();
-    startWelcomeTimer();
-  }
-
-  function hideWelcome() {
-    clearTimeout(closeTimer);
-    closeTimer = null;
-    assistant.classList.remove('is-open');
-    bubble.setAttribute('aria-expanded', 'false');
-    isOpen = false;
-    isDismissed = true;
-    clearTyping();
-    textElement.textContent = '';
-  }
-
-  bubble.addEventListener('click', () => {
-    if (isDismissed) return;
-    if (isOpen) {
-      hideWelcome();
-    } else {
-      openAssistant();
-    }
-  });
-
-  closeButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    hideWelcome();
-  });
-
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && isOpen && !isDismissed) {
-      hideWelcome();
-    }
-  });
-
-  setTimeout(() => {
-    openAssistant();
-  }, 150);
-}
-
 function setTheme(theme) {
   const isLight = theme === 'light';
   body.classList.toggle('light-theme', isLight);
@@ -105,7 +17,6 @@ function setTheme(theme) {
   localStorage.setItem('rahul-theme', theme);
 }
 
-initWelcomeAssistant();
 setTheme(localStorage.getItem('rahul-theme') || 'dark');
 if (themeToggle) {
   themeToggle.addEventListener('click', () => setTheme(body.classList.contains('light-theme') ? 'dark' : 'light'));
@@ -142,7 +53,7 @@ function initRahulAi() {
     web: "Rahul's web technology is HTML.",
     database: "Rahul works with SQL and DBMS.",
     projects: "Rahul is currently building a technical foundation through coursework, practice and hands-on experimentation.",
-    certificates: "Rahul has certificates for completing a Bridge Course and the First Commit program, with practical exposure to Git, GitHub and version control.",
+    certificates: "Rahul has a First Commit certificate with practical exposure to Git, GitHub and version control.",
     achievements: "Rahul has started his CSE journey and continues strengthening his programming fundamentals.",
     interests: "Rahul is interested in coding, competitive programming, technology, AI, problem solving, learning and the Army.",
     hobbies: "Rahul enjoys coding, competitive programming, exploring technology and learning. He is also interested in becoming an Army Officer.",
@@ -225,7 +136,7 @@ function initRahulAi() {
     ['skills', /skill|tech stack|technical|know c\+\+|know python/],
     ['projects', /project|built|build|made|developed|portfolio work/],
     ['latestProject', /latest project|most recent project|newest project/],
-    ['certificates', /certificate|certification|bridge course|first commit/],
+    ['certificates', /certificate|certification|first commit/],
     ['achievements', /achievement|milestone|accomplishment|participated|proud/],
     ['currentLocation', /where (?:does|is) rahul (?:currently )?(?:live|stay|based)|where do you live|where are you based|current location|currently live|currently based|kothay thak(?:e|o)|কোথায় থাকে|বর্তমানে কোথায়/],
     ['hometown', /where (?:are you|is rahul) from|where is rahul(?:'s)? (?:hometown|home)|where are you originally from|hometown|from ragra|from jhargram|rahul(?:'s| er|er)? bari|bari kothay|বাড়ি|বাড়ি|কোথায় থেকে|কোথায় থেকে/],
@@ -296,7 +207,7 @@ function initRahulAi() {
       web: 'Rahul-এর web technology হলো HTML।', database: 'Rahul SQL এবং DBMS নিয়ে কাজ করে।', technology: 'Rahul-এর favourite technology হলো Artificial Intelligence (AI) এবং Machine Learning।',
       skills: 'Rahul C, C++, Python, HTML, SQL, DBMS এবং Computer Networking জানে। সে VS Code, Antigravity, Git এবং GitHub-ও ব্যবহার করে।',
       projects: 'Rahul এখন first-year student হিসেবে technical foundation শক্ত করা, programming skills উন্নত করা এবং technology-এর বিভিন্ন area explore করার দিকে focused। সে coursework, practice এবং hands-on experimentation-এর মাধ্যমে শিখছে এবং experience বাড়ার সঙ্গে meaningful project তৈরি করার পরিকল্পনা করছে।',
-      certificates: 'Rahul-এর Bridge Course Certificate এবং First Commit Certificate আছে।',
+      certificates: 'Rahul-এর First Commit Certificate আছে।',
       achievements: 'Rahul CSE journey শুরু করেছে, তিনটি practical project তৈরি করেছে এবং programming fundamentals শক্ত করছে।',
       hometown: 'Rahul-er bari Ragra, Jhargram, West Bengal, India।', currentLocation: 'Rahul এখন Kolkata, West Bengal, India-তে থাকে।', interests: 'Rahul coding, competitive programming, technology, AI, problem solving, learning এবং Army-তে আগ্রহী।',
       hobbies: 'Rahul coding, competitive programming, technology explore করা এবং learning উপভোগ করে। Army Officer হওয়ার প্রতিও তার আগ্রহ আছে।',
@@ -327,7 +238,7 @@ function initRahulAi() {
       examSchedule: 'Rahul के upcoming exam schedule की जानकारी मेरे पास अभी उपलब्ध नहीं है।', examPreparation: 'Rahul programming fundamentals मजबूत कर रहा है, नियमित सीख रहा है और practical projects बना रहा है।',
       learning: 'Rahul अभी C++ सीख रहा है और अगला लक्ष्य DSA सीखना है।', languages: 'Rahul C++ और Python पसंद करता है; वह C, HTML, SQL और अन्य technologies पर भी काम करता है।', web: 'Rahul की web technology HTML है।', database: 'Rahul SQL और DBMS पर काम करता है।',
       technology: 'Rahul की favourite technology Artificial Intelligence (AI) और Machine Learning है।', skills: 'Rahul C, C++, Python, HTML, SQL, DBMS और Computer Networking जानता है। वह VS Code, Antigravity, Git और GitHub भी इस्तेमाल करता है।',
-      projects: 'Rahul अभी first-year student के रूप में अपनी technical foundation मजबूत करने, programming skills विकसित करने और technology के अलग-अलग क्षेत्रों को explore करने पर focused है। वह coursework, practice और hands-on experimentation के माध्यम से सीख रहा है और experience बढ़ने पर meaningful projects बनाने की योजना रखता है।', certificates: 'Rahul के पास Bridge Course Certificate और First Commit Certificate हैं।',
+      projects: 'Rahul अभी first-year student के रूप में अपनी technical foundation मजबूत करने, programming skills विकसित करने और technology के अलग-अलग क्षेत्रों को explore करने पर focused है। वह coursework, practice और hands-on experimentation के माध्यम से सीख रहा है और experience बढ़ने पर meaningful projects बनाने की योजना रखता है।', certificates: 'Rahul के पास First Commit Certificate है।',
       achievements: 'Rahul ने अपनी CSE journey शुरू की है, तीन practical projects बनाए हैं और programming fundamentals मजबूत कर रहा है।', hometown: 'Rahul Ragra, Jhargram, West Bengal, India से है।',
       interests: 'Rahul को coding, competitive programming, technology, AI, problem solving, learning और Army में रुचि है।', hobbies: 'Rahul coding, technology explore करना और learning पसंद करता है। उसे Army Officer बनने में भी रुचि है।',
       goal: 'Rahul का career goal Army Officer बनना और साथ में skilled software developer के रूप में आगे बढ़ना है।', strengths: 'Rahul की strengths consistent learning, experiment करने की इच्छा, practical projects, technology में interest, problem solving और discipline हैं।',
@@ -418,10 +329,10 @@ function initRahulAi() {
 
   function answerTopics(topics, language) {
     if (topics.includes('everything')) {
-      if (language === 'bn') return ['ABOUT RAHUL\n- Rahul একজন curious, consistent এবং disciplined first-year CSE student।\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: CSE\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester; Mathematics, Basic Electrical Engineering, Engineering Physics এবং English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS এবং Computer Networking\n- Tools: VS Code, Antigravity, Git এবং GitHub\n- Currently learning: C++; next goal: DSA\n\nPROJECTS\n- Rahul is currently building his technical foundation through coursework, practice and hands-on experimentation.\n\nCERTIFICATES\n- Bridge Course Certificate এবং First Commit Certificate\n\nACHIEVEMENTS\n- CSE journey শুরু করেছে এবং programming fundamentals শক্ত করছে।\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning এবং Army\n\nCAREER GOALS\n- Army Officer হওয়া এবং skilled software developer হিসেবে বেড়ে ওঠা।'];
-      if (language === 'hi') return ['ABOUT RAHUL\n- Rahul एक curious, consistent और disciplined first-year CSE student है।\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: CSE\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester; Mathematics, Basic Electrical Engineering, Engineering Physics और English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS और Computer Networking\n- Tools: VS Code, Antigravity, Git और GitHub\n- Currently learning: C++; next goal: DSA\n\nPROJECTS\n- Rahul अपनी technical foundation को coursework, practice और hands-on experimentation के माध्यम से मजबूत कर रहा है।\n\nCERTIFICATES\n- Bridge Course Certificate और First Commit Certificate\n\nACHIEVEMENTS\n- CSE journey शुरू की और programming fundamentals मजबूत कर रहा है।\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning और Army\n\nCAREER GOALS\n- Army Officer बनना और skilled software developer के रूप में आगे बढ़ना।'];
+      if (language === 'bn') return ['ABOUT RAHUL\n- Rahul একজন curious, consistent এবং disciplined first-year CSE student।\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: CSE\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester; Mathematics, Basic Electrical Engineering, Engineering Physics এবং English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS এবং Computer Networking\n- Tools: VS Code, Antigravity, Git এবং GitHub\n- Currently learning: C++; next goal: DSA\n\nPROJECTS\n- Rahul is currently building his technical foundation through coursework, practice and hands-on experimentation.\n\nCERTIFICATES\n- First Commit Certificate\n\nACHIEVEMENTS\n- CSE journey শুরু করেছে এবং programming fundamentals শক্ত করছে।\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning এবং Army\n\nCAREER GOALS\n- Army Officer হওয়া এবং skilled software developer হিসেবে বেড়ে ওঠা।'];
+      if (language === 'hi') return ['ABOUT RAHUL\n- Rahul एक curious, consistent और disciplined first-year CSE student है।\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: CSE\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester; Mathematics, Basic Electrical Engineering, Engineering Physics और English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS और Computer Networking\n- Tools: VS Code, Antigravity, Git और GitHub\n- Currently learning: C++; next goal: DSA\n\nPROJECTS\n- Rahul अपनी technical foundation को coursework, practice और hands-on experimentation के माध्यम से मजबूत कर रहा है।\n\nCERTIFICATES\n- First Commit Certificate\n\nACHIEVEMENTS\n- CSE journey शुरू की और programming fundamentals मजबूत कर रहा है।\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning और Army\n\nCAREER GOALS\n- Army Officer बनना और skilled software developer के रूप में आगे बढ़ना।'];
       return [
-        `ABOUT RAHUL\n- Rahul De is a curious, consistent and disciplined first-year CSE student.\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: Computer Science and Engineering (CSE)\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester\n- Mathematics, Basic Electrical Engineering, Engineering Physics and English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS and Computer Networking\n- Tools: VS Code, Antigravity, Git and GitHub\n- Currently learning C++; next goal: DSA\n\nPROJECTS\n- Currently building a technical foundation through coursework, practice and hands-on experimentation\n\nCERTIFICATES\n- Bridge Course Certificate and First Commit Certificate\n\nACHIEVEMENTS\n- Started his CSE journey and continues strengthening his programming fundamentals.\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning and the Army\n- Favourite sport: Cricket; favourite game: Clash of Clans\n\nFAVOURITE THINGS\n- Food: Momo; fruit: Mango; colours: White and Black\n- Movie: Vanvaas; artist: Arijit Singh; book: Balidan\n\nPERSONALITY\n- Curious, consistent and disciplined; motivated by learning, building and improvement.\n\nCAREER GOALS\n- Army Officer, with a long-term interest in growing as a software developer.\n\nARMY INTEREST\n- Drawn to the discipline and values associated with the Army.`
+        `ABOUT RAHUL\n- Rahul De is a curious, consistent and disciplined first-year CSE student.\n\nEDUCATION\n- School: Rohini C.R.D High School\n- College: Future Institute of Engineering and Management (FIEM)\n- Department: Computer Science and Engineering (CSE)\n- University: MAKAUT\n- Degree: B.Tech\n\nCURRENT ACADEMICS\n- 1st semester\n- Mathematics, Basic Electrical Engineering, Engineering Physics and English Communication\n\nPROGRAMMING & TECHNOLOGY\n- C, C++, Python, HTML, SQL, DBMS and Computer Networking\n- Tools: VS Code, Antigravity, Git and GitHub\n- Currently learning C++; next goal: DSA\n\nPROJECTS\n- Currently building a technical foundation through coursework, practice and hands-on experimentation\n\nCERTIFICATES\n- First Commit Certificate\n\nACHIEVEMENTS\n- Started his CSE journey and continues strengthening his programming fundamentals.\n\nINTERESTS & HOBBIES\n- Coding, competitive programming, technology, AI, problem solving, learning and the Army\n- Favourite sport: Cricket; favourite game: Clash of Clans\n\nFAVOURITE THINGS\n- Food: Momo; fruit: Mango; colours: White and Black\n- Movie: Vanvaas; artist: Arijit Singh; book: Balidan\n\nPERSONALITY\n- Curious, consistent and disciplined; motivated by learning, building and improvement.\n\nCAREER GOALS\n- Army Officer, with a long-term interest in growing as a software developer.\n\nARMY INTEREST\n- Drawn to the discipline and values associated with the Army.`
       ];
     }
     const answers = topics.map((topic) => localizedAnswers[language]?.[topic] || intents.find((intent) => intent.topic === topic)?.answer).filter(Boolean);
@@ -518,8 +429,6 @@ function initRahulAi() {
     input.focus();
   });
 }
-
-initRahulAi();
 
 if (menuToggle && siteNav) {
   menuToggle.addEventListener('click', (e) => {
