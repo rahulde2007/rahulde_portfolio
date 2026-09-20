@@ -1841,6 +1841,76 @@ h2 i {
     transform: translateY(-2px) scale(1.04);
 }
 
+.hero-stats {
+    width: min(100%, 620px);
+    margin: 18px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.hero-stat-card {
+    min-width: 0;
+    min-height: 70px;
+    padding: 10px 11px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-align: left;
+    background: linear-gradient(135deg, rgba(18, 22, 52, 0.76), rgba(8, 20, 40, 0.68));
+    border: 1px solid rgba(127, 140, 224, 0.3);
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 18px rgba(94, 92, 246, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.hero-stat-icon {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    display: grid;
+    place-items: center;
+    color: var(--accent-blue);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.58), rgba(76, 85, 215, 0.3));
+    border: 1px solid rgba(178, 157, 255, 0.44);
+    border-radius: 7px;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.hero-stat-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.hero-stat-content {
+    min-width: 0;
+    display: block;
+}
+
+.hero-stat-content strong,
+.hero-stat-content span {
+    display: block;
+}
+
+.hero-stat-content strong {
+    color: var(--text-bright);
+    font-family: var(--mono);
+    font-size: 16px;
+    line-height: 1.1;
+}
+
+.hero-stat-content span {
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.hero-stat-card:hover {
+    border-color: rgba(112, 194, 255, 0.58);
+    box-shadow: 0 0 22px rgba(94, 92, 246, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 /* Hero Profile Photo */
 .hero-photo {
     --profile-photo-size: clamp(200px, 20vw, 270px);
@@ -2665,6 +2735,304 @@ h2 i {
 .about-observation:hover {
     border-color: var(--line);
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 12px 32px rgba(0, 0, 0, 0.18), 0 0 18px var(--card-accent-glow);
+}
+
+/* --------------------------------------------------------------------------
+   9. Competitive Profiles Section
+   -------------------------------------------------------------------------- */
+.competitive-section {
+    background: transparent;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.competitive-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: none;
+    gap: 24px;
+}
+
+.competitive-kicker {
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.heading-accent {
+    color: var(--accent-2, #7dd3fc);
+    font-style: italic;
+}
+
+.competitive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.competitive-card {
+    --card-accent: #ff9f6e;
+    --card-accent-soft: rgba(255, 159, 110, 0.14);
+    --card-accent-glow: rgba(255, 159, 110, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 12px 16px 11px;
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(14, 17, 27, 0.96), rgba(8, 10, 18, 0.96));
+    box-shadow: 0 18px 42px rgba(2, 4, 18, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.competitive-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--card-accent), transparent 70%);
+    box-shadow: 0 0 18px var(--card-accent-glow);
+}
+
+.competitive-card:nth-child(1) {
+    --card-accent: #f6ad3c;
+    --card-accent-soft: rgba(246, 173, 60, 0.13);
+    --card-accent-glow: rgba(246, 173, 60, 0.28);
+    --card-border: rgba(246, 173, 60, 0.34);
+}
+
+.competitive-card:nth-child(2) {
+    --card-accent: #45c7f4;
+    --card-accent-soft: rgba(69, 199, 244, 0.13);
+    --card-accent-glow: rgba(69, 199, 244, 0.28);
+    --card-border: rgba(69, 199, 244, 0.34);
+}
+
+.competitive-card:nth-child(3) {
+    --card-accent: #bd8cf5;
+    --card-accent-soft: rgba(189, 140, 245, 0.13);
+    --card-accent-glow: rgba(189, 140, 245, 0.28);
+    --card-border: rgba(189, 140, 245, 0.34);
+}
+
+.competitive-card:nth-child(4) {
+    --card-accent: #39d39a;
+    --card-accent-soft: rgba(57, 211, 154, 0.13);
+    --card-accent-glow: rgba(57, 211, 154, 0.28);
+    --card-border: rgba(57, 211, 154, 0.34);
+}
+
+.competitive-card:nth-child(5) {
+    --card-accent: #f06448;
+    --card-accent-soft: rgba(240, 100, 72, 0.13);
+    --card-accent-glow: rgba(240, 100, 72, 0.28);
+    --card-border: rgba(240, 100, 72, 0.34);
+}
+
+.competitive-card:nth-child(6) {
+    --card-accent: #35d5c0;
+    --card-accent-soft: rgba(53, 213, 192, 0.13);
+    --card-accent-glow: rgba(53, 213, 192, 0.28);
+    --card-border: rgba(53, 213, 192, 0.34);
+}
+
+.competitive-card:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(3, 6, 20, 0.56), 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 20px var(--card-accent-glow);
+}
+
+.competitive-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.competitive-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.platform-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--card-accent-soft);
+    border: 1px solid var(--card-border);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0 0 16px var(--card-accent-glow);
+    color: var(--card-accent);
+    flex-shrink: 0;
+}
+
+.platform-icon img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+}
+
+.platform-text {
+    min-width: 0;
+}
+
+.platform-text h3 {
+    margin: 0;
+    color: #f5f7ff;
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.platform-text p {
+    margin: 4px 0 0;
+    color: rgba(210, 223, 236, 0.72);
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.competitive-badge {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--card-accent-soft);
+    color: var(--card-accent);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.competitive-card-divider {
+    height: 1px;
+    margin-top: 7px;
+    background: linear-gradient(90deg, rgba(187, 192, 215, 0.18), rgba(255, 255, 255, 0.02));
+}
+
+.competitive-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 10px;
+}
+
+.competitive-stat-stack {
+    gap: 4px;
+}
+
+.stat-number {
+    color: var(--card-accent);
+    font-size: clamp(1.35rem, 1.55vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+}
+
+.stat-label {
+    color: rgba(207, 219, 232, 0.76);
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.competitive-stat-empty {
+    min-height: 40px;
+}
+
+.competitive-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    width: fit-content;
+    padding-top: 8px;
+    color: #edf4ff;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.competitive-link:hover {
+    color: var(--card-accent);
+}
+
+.link-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--card-accent);
+    font-size: 0.64rem;
+    font-weight: 700;
+    font-family: var(--mono);
+}
+
+@media (max-width: 760px) {
+    .competitive-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .competitive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .competitive-card {
+        min-height: 0;
+        padding: 12px 14px 11px;
+        border-radius: 18px;
+    }
+
+    .competitive-card-top {
+        gap: 10px;
+    }
+
+    .platform-text h3 {
+        font-size: 0.96rem;
+    }
+
+    .platform-text p {
+        font-size: 0.74rem;
+    }
+
+    .competitive-badge {
+        min-height: 24px;
+        padding: 4px 8px;
+        font-size: 0.6rem;
+        letter-spacing: 0.08em;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .competitive-link {
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -4605,6 +4973,18 @@ h2 i {
         justify-content: center;
     }
 
+    .hero-stats {
+        width: min(100%, 360px);
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .hero-stat-card {
+        min-height: 62px;
+        padding: 9px 11px;
+    }
+
     .button-row {
         flex-direction: row;
         width: auto;
@@ -5302,154 +5682,236 @@ h2 i {
     padding-bottom: 90px;
 }
 
+.certificates-section::before {
+    content: "";
+    position: absolute;
+    inset: 40px 0 auto;
+    height: 420px;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.18), rgba(8, 14, 26, 0) 62%);
+    filter: blur(26px);
+    pointer-events: none;
+}
+
 .certificates-heading {
-    max-width: 760px;
-    margin-bottom: 34px;
+    max-width: 820px;
+    margin: 0 0 38px;
+    text-align: left;
 }
 
 .certificates-heading h2 {
-    font-size: clamp(2.2rem, 5vw, 4.4rem);
-    line-height: 1.02;
-    letter-spacing: -0.05em;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
     font-weight: 800;
+    margin: 0;
+    text-align: left;
+}
+
+.certificates-heading h2 i {
+    display: inline-block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    color: #7fe9ff;
+    letter-spacing: -0.05em;
 }
 
 .certificates-grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 22px;
+    max-width: 1200px;
+    margin: 0 auto;
     align-items: stretch;
 }
 
 .certificates-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    min-height: 220px;
-    padding: 22px 22px 20px;
-    background: rgba(9, 16, 32, 0.72);
-    border: 1px solid rgba(126, 157, 219, 0.22);
-    border-radius: 18px;
-    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 170px;
+    padding: 18px 24px 16px;
+    background: linear-gradient(180deg, rgba(7, 13, 24, 0.82), rgba(10, 18, 30, 0.74));
+    border: 1px solid rgba(120, 160, 220, 0.24);
+    border-radius: 22px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 22px 48px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(95, 234, 212, 0.04);
     color: var(--text);
     text-decoration: none;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    overflow: hidden;
+}
+
+.certificates-card::before {
+    content: "";
+    position: absolute;
+    top: -44px;
+    right: -40px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.18), rgba(94, 234, 212, 0) 69%);
+    pointer-events: none;
 }
 
 .certificates-card:hover,
 .certificates-card:focus-visible {
     transform: translateY(-4px);
-    border-color: rgba(87, 217, 255, 0.72);
-    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(87, 217, 255, 0.08);
-    background: rgba(13, 20, 36, 0.8);
+    border-color: rgba(122, 220, 255, 0.62);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 26px 58px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(122, 220, 255, 0.12);
+    background: linear-gradient(180deg, rgba(9, 17, 31, 0.88), rgba(12, 22, 37, 0.8));
     outline: none;
 }
 
 .certificates-card-top {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 12px;
 }
 
 .certificates-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 32px;
-    padding: 0 12px;
+    min-height: 26px;
+    padding: 0 10px;
     border-radius: 999px;
-    border: 1px solid rgba(87, 217, 255, 0.34);
-    background: rgba(87, 217, 255, 0.08);
-    color: var(--accent);
+    border: 1px solid rgba(127, 233, 255, 0.38);
+    background: rgba(127, 233, 255, 0.08);
+    color: #9ae7ff;
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
+    line-height: 1;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .certificates-arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(163, 177, 217, 0.32);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    color: var(--text);
-    font-size: 1.2rem;
+    border: 1px solid rgba(150, 171, 210, 0.32);
     background: rgba(255, 255, 255, 0.02);
+    color: var(--text-bright);
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .certificates-card-body {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
+    flex: 1;
 }
 
 .certificates-label {
+    margin: 0 0 8px;
+    color: #8dd8ff;
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.14em;
+    font-size: 9px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    font-weight: 600;
 }
 
 .certificates-card h3 {
-    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
-    line-height: 1.08;
-    letter-spacing: -0.05em;
     margin: 0;
-}
-
-.certificates-card h3 a {
+    font-size: clamp(1.5rem, 2vw, 2.1rem);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    font-weight: 700;
     color: var(--text-bright);
-    text-decoration: none;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 5px;
-    transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
-.certificates-card h3 a:hover,
-.certificates-card h3 a:focus-visible {
-    color: var(--accent);
-    text-decoration: underline;
-    outline: none;
-}
-
-.certificates-card p:last-child {
+.certificates-meta {
+    margin: 8px 0 0;
     color: var(--muted);
-    line-height: 1.7;
-    font-size: 0.96rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.certificates-issued {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid rgba(127, 176, 229, 0.2);
+    color: #d9efff;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
+    .certificates-section {
+        padding-top: 12px;
+        padding-bottom: 72px;
+    }
+
+    .certificates-heading {
+        margin-bottom: 24px;
+    }
+
     .certificates-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
     }
 
     .certificates-card {
-        min-height: 200px;
+        min-height: 150px;
+        padding: 16px 18px 14px;
+        border-radius: 20px;
+    }
+
+    .certificates-badge {
+        min-height: 24px;
+        font-size: 8.5px;
+        letter-spacing: 0.08em;
+    }
+
+    .certificates-arrow {
+        width: 34px;
+        height: 34px;
+    }
+
+    .certificates-label {
+        margin-bottom: 7px;
+        font-size: 8px;
+    }
+
+    .certificates-card h3 {
+        font-size: clamp(1.2rem, 5vw, 1.7rem);
+    }
+
+    .certificates-meta {
+        font-size: 0.77rem;
+    }
+
+    .certificates-issued {
+        font-size: 0.58rem;
     }
 }
 
 @media (max-width: 480px) {
-    .certificates-section {
-        padding-top: 10px;
-        padding-bottom: 64px;
+    .certificates-heading h2 {
+        font-size: clamp(2.2rem, 12vw, 3.3rem);
     }
 
     .certificates-card {
-        padding: 18px 18px 16px;
-    }
-
-    .certificates-card h3 {
-        font-size: 1.4rem;
-    }
-
-    .certificates-card p:last-child {
-        font-size: 0.9rem;
+        min-height: 150px;
     }
 }
 
